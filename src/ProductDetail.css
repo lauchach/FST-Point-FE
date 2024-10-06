@@ -1,0 +1,98 @@
+/* Container สำหรับรายละเอียดของสินค้า */
+.product-detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  max-width: 700px;
+  margin: 50px auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-detail-container:hover {
+  transform: scale(1.02);
+}
+
+.product-detail-container img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.product-detail-container h3 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+
+
+/* ปุ่ม Redeem */
+
+/* ปุ่ม Redeem */
+.product-detail-container button {
+  background: linear-gradient(135deg, #6dd5fa, #2980b9);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out, transform 0.2s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  margin: 20px; /* เพิ่มระยะห่างด้านบนของปุ่ม */
+  margin-bottom: 30px; /* เพิ่มระยะห่างด้านล่างของปุ่ม */
+}
+
+/* ปรับปรุงระยะห่างของข้อมูล */
+.product-detail-container p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 15px; /* เพิ่มระยะห่างด้านล่างของข้อความ */
+  text-align: center;
+}
+
+.product-detail-container button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.product-detail-container button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3498db, #2ecc71);
+  transform: translateY(-3px);
+}
+
+/* สำหรับข้อความแจ้งเตือนเมื่อมีข้อผิดพลาด */
+.error-message {
+  color: #e74c3c;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+/* เอฟเฟกต์การเคลื่อนไหว (Transition) สำหรับ Container */
+.product-detail-container {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+

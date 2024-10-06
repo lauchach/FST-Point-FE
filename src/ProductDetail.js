@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getProductDetails, redeemProduct } from './apiService'; // API for product details and redeem
-import ConfirmDialog from './ConfirmDialog'; // Dialog for confirmation
+import { getProductDetails, redeemProduct } from './apiService';
+import ConfirmDialog from './ConfirmDialog';
+import './ProductDetail.css'; // นำเข้าไฟล์ CSS
 
 const ProductDetail = () => {
-    const { id } = useParams(); // Get the product ID from URL
+    const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [error, setError] = useState(null);
     const [dialogVisible, setDialogVisible] = useState(false);
+    const [backgroundPosition, setBackgroundPosition] = useState('center');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -22,24 +24,33 @@ const ProductDetail = () => {
         fetchData();
     }, [id]);
 
+    const handleMouseMove = (event) => {
+        const x = event.clientX / window.innerWidth * 100;
+        const y = event.clientY / window.innerHeight * 100;
+        setBackgroundPosition(`${x}% ${y}%`);
+    };
+
     const handleRedeem = () => {
         if (product && product.canRedeem) {
-            setDialogVisible(true); // Show confirmation dialog
+            setDialogVisible(true);
         }
     };
 
     const handleConfirmRedeem = async () => {
         try {
-            await redeemProduct(id); // Redeem the product
-            navigate('/home'); // Navigate back to home after redeeming
+            await redeemProduct(id);
+            navigate('/home');
         } catch (err) {
             setError('Failed to redeem product: ' + err.message);
         }
     };
 
     return (
-        <div>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div 
+            className="product-detail-container" 
+            onMouseMove={handleMouseMove} 
+            style={{ backgroundPosition: backgroundPosition }}>
+            {error && <p className="error-message">{error}</p>}
             {product && (
                 <div>
                     <img src={product.image} alt={product.name} />
@@ -48,11 +59,9 @@ const ProductDetail = () => {
                     <p>Expires on: {product.expiryDate}</p>
                     <p>Conditions: {product.conditions}</p>
                     
-                    {/* ปุ่มแลกรับสิทธิ์ ถ้าคะแนนไม่พอจะถูก Disabled */}
                     <button 
                         onClick={handleRedeem} 
-                        disabled={product.points > product.userPoints || !product.canRedeem}> 
-                        {/* Disable เมื่อคะแนนผู้ใช้ไม่พอ หรือไม่สามารถแลกรับได้ */}
+                        disabled={product.points > product.userPoints || !product.canRedeem}>
                         Redeem
                     </button>
                 </div>

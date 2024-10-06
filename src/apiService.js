@@ -61,7 +61,7 @@ export const getProducts = async () => {
 // ฟังก์ชันเพื่อดึงข้อมูลประวัติการแลกรับสิทธิ์
 export const getRedeemedProducts = async () => {
     try {
-        const response = await api.get('/redeemed-products');
+        const response = await api.get('/user/redeemedProducts');
         return response.data;
     } catch (error) {
         throw error.response || error.message;
