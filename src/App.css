@@ -63,21 +63,16 @@ button:hover {
 /* Home Page Styles */
 .product-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  overflow-x: scroll; /* Allows horizontal scrolling */
   gap: 20px;
-  margin-top: 40px; /* To create space from fixed navbar */
+  padding: 20px;
+  scroll-snap-type: x mandatory;
 }
 
-/* Individual product card styling */
 .product-card {
-  border: 1px solid #ddd;
-  padding: 15px;
-  width: calc(33.33% - 40px); /* Adjusts based on screen size */
-  text-align: center;
-  box-sizing: border-box; /* Includes padding in the width calculation */
-  background-color: #f9f9f9;
-  transition: transform 0.3s;
+  scroll-snap-align: center; /* Makes items snap to center when scrolling */
+  flex-shrink: 0; /* Prevents shrinking */
+  width: 300px; /* Card width */
 }
 
 /* Hover effect */

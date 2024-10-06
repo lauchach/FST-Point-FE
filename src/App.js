@@ -1,48 +1,23 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Login';
-import Home from './Home';
-import ProductDetail from './ProductDetail';
-import Navbar from './Navbar';
+import Home from './Home'; // หน้า Home
+import Reward from './Reward'; // หน้า Reward
+import Profile from './Profile'; // หน้า Profile
+import ProductDetail from './ProductDetail'; // หน้ารายละเอียดสินค้า
+import Navbar from './Navbar'; // แถบเมนูด้านล่าง
 import './App.css';
-
-
 
 const App = () => {
     return (
         <Router>
-            <Navbar />
+            <Navbar /> {/* แถบเมนูด้านล่าง */}
             <Routes>
                 <Route path="/" element={<Login />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/product/:id" element={<ProductDetail />} />
+                <Route path="/home" element={<Home />} /> {/* เส้นทางไปยังหน้า Home */}
+                <Route path="/rewards" element={<Reward />} /> {/* เส้นทางไปยังหน้า Reward */}
+                <Route path="/profile" element={<Profile />} /> {/* เส้นทางไปยังหน้า Profile */}
+                <Route path="/product/:id" element={<ProductDetail />} /> {/* หน้ารายละเอียดสินค้า */}
             </Routes>
         </Router>
     );

@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { getProducts } from './apiService'; // Import the API service for fetching products
-import ProductCard from './ProductCard'; // A separate component for rendering individual products
+import { getUserInfo, getProducts } from './apiService'; // Import API calls for user info and products
+import ProductCard from './ProductCard'; // Product card component
+import { Link } from 'react-router-dom';
 
 const Home = () => {
-    const [points, setPoints] = useState(0);
+    const [user, setUser] = useState({ name: '', points: 0 });
     const [products, setProducts] = useState([]);
     const [error, setError] = useState(null);
 
-    // Fetch products and user points when the component mounts
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await getProducts(); // Fetch products from the API service
-                setPoints(data.points); // Update points from response
-                setProducts(data.products); // Update product list from response
+                const userInfo = await getUserInfo(); // Get user name and points
+                setUser(userInfo);
+
+                const productData = await getProducts(); // Fetch product list
+                setProducts(productData.products);
             } catch (err) {
-                setError('Failed to fetch products: ' + (err.message || err));
+                setError('Failed to load data: ' + err.message);
             }
         };
         fetchData();
@@ -23,11 +25,12 @@ const Home = () => {
 
     return (
         <div>
-            <h2>Points: {points}</h2>
+            <h2>Welcome, {user.name}</h2>
+            <h3>Points: {user.points}</h3>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <div className="product-list">
                 {products.map((product) => (
-                    <ProductCard key={product.id} product={product} /> // Reusable ProductCard component for each product
+                    <ProductCard key={product.id} product={product} /> // Render each product
                 ))}
             </div>
         </div>

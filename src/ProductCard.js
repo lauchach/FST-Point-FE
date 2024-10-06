@@ -7,6 +7,8 @@ const ProductCard = ({ product }) => {
             <img src={product.image} alt={product.name} />
             <h3>{product.name}</h3>
             <p>{product.description}</p>
+            <p>Points: {product.points}</p>
+            <p>Expires: {product.expiryDate}</p>
             <Link to={`/product/${product.id}`}>View Details</Link>
         </div>
     );
