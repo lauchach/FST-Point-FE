@@ -1,0 +1,55 @@
+/* Reward History Container */
+.reward-container {
+  background-color: #fff;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title for the reward history */
+.reward-container h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center;
+}
+
+/* List of redeemed rewards */
+.reward-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Individual reward item */
+.reward-list li {
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Reward title */
+.reward-list li h4 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+/* Redeemed date */
+.redeemed-date {
+  font-size: 14px;
+  color: #999;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  text-align: center;
+  margin-bottom: 20px;
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getUserProfile, updateUserProfile } from './apiService'; // API สำหรับดึงและแก้ไขโปรไฟล์ผู้ใช้
+import { getUserProfile, updateUserProfile } from './apiService'; // Import API for user profile
 
 const Profile = () => {
     const [profile, setProfile] = useState({ name: '', email: '' });
@@ -35,19 +35,21 @@ const Profile = () => {
     };
 
     return (
-        <div>
+        <div className="profile-container">
             <h2>Profile</h2>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {success && <p style={{ color: 'green' }}>{success}</p>}
 
             {!editMode ? (
-                <div>
-                    <p>Name: {profile.name}</p>
-                    <p>Email: {profile.email}</p>
-                    <button onClick={() => setEditMode(true)}>Edit Profile</button>
+                <div className="profile-info">
+                    <p><span>Name:</span> {profile.name}</p>
+                    <p><span>Email:</span> {profile.email}</p>
+                    <button className="profile-edit-btn" onClick={() => setEditMode(true)}>
+                        Edit Profile
+                    </button>
                 </div>
             ) : (
-                <div>
+                <div className="profile-edit-form">
                     <input
                         type="text"
                         name="name"
@@ -63,7 +65,6 @@ const Profile = () => {
                         placeholder="Email"
                     />
                     <button onClick={handleSave}>Save</button>
-                    <button onClick={() => setEditMode(false)}>Cancel</button>
                 </div>
             )}
         </div>
