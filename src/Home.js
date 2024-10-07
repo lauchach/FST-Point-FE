@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getUserInfo, getProducts } from './apiService'; // Import API calls for user info and products
-import ProductCard from './ProductCard'; // Product card component
+import { getUserInfo, getProducts } from './apiService'; 
+import ProductCard from './ProductCard'; 
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -11,10 +11,10 @@ const Home = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const userInfo = await getUserInfo(); // Get user name and points
+                const userInfo = await getUserInfo(); 
                 setUser(userInfo);
 
-                const productData = await getProducts(); // Fetch product list
+                const productData = await getProducts(); 
                 setProducts(productData.products);
             } catch (err) {
                 setError('Failed to load data: ' + err.message);
@@ -30,7 +30,7 @@ const Home = () => {
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <div className="product-list">
                 {products.map((product) => (
-                    <ProductCard key={product.id} product={product} /> // Render each product
+                    <ProductCard key={product.id} product={product} /> 
                 ))}
             </div>
         </div>

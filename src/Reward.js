@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getRedeemedProducts } from './apiService'; // API สำหรับดึงประวัติการแลกสิทธิ์
-import './Reward.css'; // Import ไฟล์ CSS
+import { getRedeemedProducts } from './apiService'; 
+import './Reward.css'; 
 
 const Reward = () => {
     const [redeemedProducts, setRedeemedProducts] = useState([]);
@@ -9,7 +9,7 @@ const Reward = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const products = await getRedeemedProducts(); // ดึงข้อมูลประวัติการแลกรับ
+                const products = await getRedeemedProducts(); 
                 setRedeemedProducts(products);
             } catch (err) {
                 setError('Failed to load redeemed products: ' + err.message);

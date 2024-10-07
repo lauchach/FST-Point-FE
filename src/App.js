@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './Login';
-import Home from './Home'; // หน้า Home
-import Reward from './Reward'; // หน้า Reward
-import Profile from './Profile'; // หน้า Profile
-import ProductDetail from './ProductDetail'; // หน้ารายละเอียดสินค้า
-import Navbar from './Navbar'; // แถบเมนูด้านล่าง
+import Home from './Home'; 
+import Reward from './Reward'; 
+import Profile from './Profile'; 
+import ProductDetail from './ProductDetail'; 
+import Navbar from './Navbar'; 
 import './App.css';
 
 const App = () => {

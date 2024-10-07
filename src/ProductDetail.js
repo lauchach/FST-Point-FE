@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getProductDetails, redeemProduct } from './apiService';
 import ConfirmDialog from './ConfirmDialog';
-import './ProductDetail.css'; // นำเข้าไฟล์ CSS
+import './ProductDetail.css'; 
 
 const ProductDetail = () => {
     const { id } = useParams();
